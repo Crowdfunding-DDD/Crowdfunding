@@ -5,7 +5,9 @@ import java.util.Set;
 import java.util.UUID;
 
 public record Campagne(UUID id, UUID createur, String nom, String description, CampagneTypeEnum type,
-                       LocalDate dateCreation, Double objectif, Set<Investissement> investissements, CampagneStateEnum etat)
+                       LocalDate dateCreation, Double objectif, Set<Investissement> investissements,
+                       CampagneStateEnum etat, Double tauxIntret)
 {
-
 }
+
+
