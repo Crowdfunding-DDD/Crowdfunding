@@ -1,13 +1,29 @@
 package fr.esgi.crowdfunding.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
 
-public record Campagne(UUID id, UUID createur, String nom, String description, CampagneTypeEnum type,
-                       LocalDate dateCreation, Double objectif, Set<Investissement> investissements,
-                       CampagneStateEnum etat, Double tauxIntret)
-{
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Campagne {
+    UUID id;
+    UUID createur;
+    String nom;
+    String description;
+    CampagneTypeEnum type;
+    LocalDate dateCreation;
+    Double objectif;
+    Set<Investissement> investissements;
+    CampagneStateEnum etat;
+    Double tauxIntret;
 }
 
 

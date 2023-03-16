@@ -14,12 +14,11 @@ public class CalculerRecompenses {
     public List<Recompense> apply(UUID investisseurId){
         var investisseur = getInvestisseur(investisseurId);
         var investments = investisseur.investissements();
-        return investments.stream().map(investissement -> new Recompense(investissement.campagne().id(),investissement.getAllRecompenses())).toList();
+        return investments.stream().map(investissement -> new Recompense(investissement.campagne().getId(),investissement.getAllRecompenses())).toList();
     }
 
     private Investisseur getInvestisseur(UUID investisseurId) {
         return investisseurRepository.getById(investisseurId).orElseThrow(() -> new RuntimeException("Investisseur non trouver."));
     }
-
 
 }
