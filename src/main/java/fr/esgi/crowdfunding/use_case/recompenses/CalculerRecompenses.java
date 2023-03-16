@@ -12,16 +12,16 @@ import java.util.function.Function;
 
 import static fr.esgi.crowdfunding.model.CampagneStateEnum.DONE;
 
-public class Recompense {
+public class CalculerRecompenses {
     private static final Double ZERO = 0d;
     private final InvestisseurRepository investisseurRepository;
 
-    public Recompense(InvestisseurRepository investisseurRepository) {
+    public CalculerRecompenses(InvestisseurRepository investisseurRepository) {
         this.investisseurRepository = investisseurRepository;
     }
 
     public Map<UUID,Double> apply(UUID investisseurId){
-        var investisseur = investisseurRepository.getById(investisseurId).orElseThrow(()-> new RuntimeException("Investisseur non trouver."));
+        var investisseur = getInvestisseur(investisseurId);
         var recompenses = new HashMap<UUID,Double>();
         var investments = investisseur.investissements();
         investments.stream().forEach(investissement ->{
@@ -35,15 +35,19 @@ public class Recompense {
         return recompenses;
     }
 
+    private Investisseur getInvestisseur(UUID investisseurId) {
+        return investisseurRepository.getById(investisseurId).orElseThrow(() -> new RuntimeException("Investisseur non trouver."));
+    }
+
     private Function<Investissement,Double> recompenseCrowdEquity = investissement -> {
-        if(Objects.equals(investissement.campagne().etat(),DONE)) {
-            return investissement.montant() * investissement.campagne().tauxIntret()/100;
-        }
-        return ZERO;
+        return Objects.equals(investissement.campagne().etat(),DONE)
+                ?
+             investissement.montant() * investissement.campagne().tauxIntret()/100
+        :
+         ZERO;
     };
     private Function<Investissement,Double> recompenseCrowdLending = investissement -> {
-        Period period = Period.between(investissement.date(), LocalDate.now());
-        var nbMonths = period.toTotalMonths();
+        var nbMonths = Period.between(investissement.date(), LocalDate.now()).toTotalMonths();
         return investissement.montant() * investissement.campagne().tauxIntret() * nbMonths/ 100;
     };
 }

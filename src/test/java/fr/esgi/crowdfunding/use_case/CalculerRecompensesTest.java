@@ -1,7 +1,7 @@
 package fr.esgi.crowdfunding.use_case;
 
 import fr.esgi.crowdfunding.model.*;
-import fr.esgi.crowdfunding.use_case.recompenses.Recompense;
+import fr.esgi.crowdfunding.use_case.recompenses.CalculerRecompenses;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -17,15 +17,15 @@ import static fr.esgi.crowdfunding.model.CampagneTypeEnum.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-class RecompenseTest {
+class CalculerRecompensesTest {
     @Mock
     private InvestisseurRepository investisseurRepository;
-    private Recompense recompense;
+    private CalculerRecompenses calculerRecompenses;
 
     @BeforeEach
      void init() {
         MockitoAnnotations.initMocks(this);
-        recompense = new Recompense(investisseurRepository);
+        calculerRecompenses = new CalculerRecompenses(investisseurRepository);
     }
 
     @Test
@@ -49,7 +49,7 @@ class RecompenseTest {
         expectedRecompenses.put(campagne2.id(), 60.0);
         expectedRecompenses.put(campagne3.id(), 0.0);
 
-        var actualRecompenses = recompense.apply(investisseurId);
+        var actualRecompenses = calculerRecompenses.apply(investisseurId);
 
         assertEquals(expectedRecompenses, actualRecompenses);
     }
