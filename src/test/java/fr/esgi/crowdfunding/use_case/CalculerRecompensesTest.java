@@ -8,12 +8,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static fr.esgi.crowdfunding.model.CampagneTypeEnum.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -29,7 +27,7 @@ class CalculerRecompensesTest {
     }
 
     @Test
-     void testApply() {
+     void testApply_() {
         var investisseurId = UUID.randomUUID();
         var investisseur = new Investisseur(investisseurId,"Test",new HashSet<>());
         var campagne1 = new Campagne(UUID.randomUUID(),investisseurId,"Campagne 1","", CROWD_EQUITY, LocalDate.of(2022,6,1) ,10000d,null, CampagneStateEnum.DONE,2d);
@@ -44,13 +42,16 @@ class CalculerRecompensesTest {
 
         when(investisseurRepository.getById(investisseurId)).thenReturn(java.util.Optional.of(investisseur));
 
-        Map<UUID,Double> expectedRecompenses = new HashMap<>();
-        expectedRecompenses.put(campagne1.id(), 20.0);
-        expectedRecompenses.put(campagne2.id(), 60.0);
-        expectedRecompenses.put(campagne3.id(), 0.0);
+        List<Recompense> expectedRecompenses = new ArrayList<>();
+        expectedRecompenses.add(new Recompense(campagne1.id(), 20.0));
+        expectedRecompenses.add(new Recompense(campagne2.id(), 60.0));
+        expectedRecompenses.add(new Recompense(campagne3.id(), 0.0));
 
         var actualRecompenses = calculerRecompenses.apply(investisseurId);
 
-        assertEquals(expectedRecompenses, actualRecompenses);
+        assertEquals(expectedRecompenses.size(), actualRecompenses.size());
+
+        Comparator<Recompense> idComparator = Comparator.comparing(Recompense::campagneId);
+        assertArrayEquals(expectedRecompenses.stream().sorted(idComparator).toArray(), actualRecompenses.stream().sorted(idComparator).toArray());
     }
 }
