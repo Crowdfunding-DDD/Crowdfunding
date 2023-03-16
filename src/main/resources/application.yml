@@ -1,0 +1,29 @@
+server:
+  port: 8085
+logging:
+  level:
+    ROOT: DEBUG
+    tech.jhipster: DEBUG
+    org.hibernate.SQL: DEBUG
+    com.trustteam.cnbees: DEBUG
+
+spring:
+  profiles:
+    active: 'dev'
+  application:
+    name: 'Crowdfunding'
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    url: jdbc:postgresql://${POSTGRES_DB:localhost:5432/crowdfunding}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      show_sql: true
+      format_sql: true
+      use_sql_comments: false
+      type: all
+      disableConnectionTracking: true
