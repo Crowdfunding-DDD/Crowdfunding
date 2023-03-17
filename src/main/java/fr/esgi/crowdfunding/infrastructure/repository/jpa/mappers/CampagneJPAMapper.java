@@ -14,5 +14,12 @@ import org.springframework.stereotype.Component;
         uses = {},
         injectionStrategy = InjectionStrategy.CONSTRUCTOR
 )
+
 public interface CampagneJPAMapper extends GenericJPAMapper<Campagne, CampagneJPA> {
+    @Mapping(source = "id.id", target = "id")
+    CampagneJPA toRepository(Campagne domain);
+
+    @Mapping(source = "id", target = "id.id")
+    Campagne toDomain(CampagneJPA repository);
+
 }

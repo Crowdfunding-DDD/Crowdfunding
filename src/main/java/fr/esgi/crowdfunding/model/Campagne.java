@@ -24,10 +24,6 @@ public class Campagne {
     Set<Investissement> investissements;
     CampagneStateEnum etat;
     Double tauxIntret;
-
-    public CampagneStateEnum gztCampagneEtat(Campagne campagne) {
-        return campagne.getEtat();
-    }
 }
 
 
