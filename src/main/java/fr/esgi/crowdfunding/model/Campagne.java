@@ -23,7 +23,11 @@ public class Campagne {
     Double objectif;
     Set<Investissement> investissements;
     CampagneStateEnum etat;
-    Double tauxIntret;
+    Double tauxInteret;
+
+    public CampagneStateEnum getCampagneEtat(Campagne campagne) {
+        return campagne.getEtat();
+    }
 }
 
 

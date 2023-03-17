@@ -3,11 +3,8 @@ package fr.esgi.crowdfunding.model;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
-import java.util.UUID;
-import java.util.function.ToDoubleFunction;
 
 import static fr.esgi.crowdfunding.model.CampagneStateEnum.DONE;
-import static fr.esgi.crowdfunding.model.CampagneTypeEnum.*;
 
 public record Investissement(InvestissementID id, Investisseur investisseur, Campagne campagne, Double montant, LocalDate date) {
     private static final Double ZERO = 0d;
@@ -20,13 +17,13 @@ public record Investissement(InvestissementID id, Investisseur investisseur, Cam
         };
     }
     private Double recompenseCrowdEquity (){
-        return Objects.equals((campagne),DONE) ? montant() * campagne.getTauxIntret()/100 : ZERO;
+        return Objects.equals((campagne),DONE) ? montant() * campagne.getTauxInteret()/100 : ZERO;
     }
 
 
     private Double recompenseCrowdLending () {
         var nbMonths = Period.between(date, LocalDate.now()).toTotalMonths();
-        return montant * campagne.getTauxIntret() * nbMonths/ 100;
+        return montant * campagne.getTauxInteret() * nbMonths/ 100;
     };
     @Override
     public boolean equals(Object o) {
