@@ -3,7 +3,7 @@ package fr.esgi.crowdfunding.model;
 import java.util.Objects;
 import java.util.UUID;
 
-public record Recompense(UUID campagneId,Double montant) {
+public record Recompense(CampagneID campagneId,Double montant) {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

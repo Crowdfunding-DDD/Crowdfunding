@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Campagne {
-    UUID id;
+    CampagneID id;
     UUID createur;
     String nom;
     String description;

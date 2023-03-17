@@ -5,6 +5,7 @@ import fr.esgi.crowdfunding.model.Campagne;
 import org.mapstruct.Builder;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
 
 @Component

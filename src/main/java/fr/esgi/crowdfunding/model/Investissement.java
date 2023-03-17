@@ -9,7 +9,7 @@ import java.util.function.ToDoubleFunction;
 import static fr.esgi.crowdfunding.model.CampagneStateEnum.DONE;
 import static fr.esgi.crowdfunding.model.CampagneTypeEnum.*;
 
-public record Investissement(UUID id, Investisseur investisseur, Campagne campagne, Double montant, LocalDate date) {
+public record Investissement(InvestissementID id, Investisseur investisseur, Campagne campagne, Double montant, LocalDate date) {
     private static final Double ZERO = 0d;
 
     public Double getAllRecompenses() {

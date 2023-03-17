@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.UUID;
 
 
-public record Investisseur(UUID id, String nom, Set<Investissement> investissements) {
+public record Investisseur(InvestisseurID id, String nom, Set<Investissement> investissements) {
     public void addInvestissement(Investissement investissement){
         investissements.add(investissement);
     }
