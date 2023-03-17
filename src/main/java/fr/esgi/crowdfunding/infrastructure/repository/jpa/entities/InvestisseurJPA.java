@@ -22,6 +22,4 @@ public class InvestisseurJPA {
     @SequenceGenerator(name = "investisseurs_id_seq", sequenceName = "investisseurs_id_seq", initialValue = 1, allocationSize = 1)
     UUID id;
     String nom;
-    @OneToMany
-    Set<InvestissementJPA> investissements;
 }

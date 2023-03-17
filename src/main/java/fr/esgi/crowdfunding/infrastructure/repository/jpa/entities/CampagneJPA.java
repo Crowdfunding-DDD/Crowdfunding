@@ -31,8 +31,6 @@ public class CampagneJPA {
     CampagneTypeEnum type;
     LocalDate dateCreation;
     Double objectif;
-    @OneToMany
-    Set<InvestissementJPA> investissements;
     @Enumerated(EnumType.STRING)
     CampagneStateEnum etat;
     Double tauxIntret;
