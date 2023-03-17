@@ -3,6 +3,7 @@ package fr.esgi.crowdfunding.use_case;
 import fr.esgi.crowdfunding.model.*;
 import fr.esgi.crowdfunding.use_case.recompenses.CalculerRecompenses;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -27,6 +28,7 @@ class CalculerRecompensesTest {
     }
 
     @Test
+    @DisplayName("Calcule des récompenses pour un investisseur avec un investissement dans une campagne de type CROWD_EQUITY")
      void testApplyEquity_() {
         var investisseurId = new InvestisseurID(UUID.randomUUID());
         var investisseur = new Investisseur(investisseurId,"Test",new HashSet<>());
@@ -48,6 +50,7 @@ class CalculerRecompensesTest {
         assertEquals(expectedRecompenses, actualRecompenses);
     }
     @Test
+    @DisplayName("Calcule des récompenses pour un investisseur avec un investissement dans une campagne de type CROWD_LENDING")
     void testApplyLending_() {
         var investisseurId = new InvestisseurID(UUID.randomUUID());
         var investisseur = new Investisseur(investisseurId,"Test",new HashSet<>());
@@ -69,6 +72,7 @@ class CalculerRecompensesTest {
         assertEquals(expectedRecompenses, actualRecompenses);
     }
     @Test
+    @DisplayName("Calcule des récompenses pour un investisseur avec un investissement dans une campagne de type CROWD_DONATION")
     void testApplyDonation_() {
         var investisseurId = new InvestisseurID(UUID.randomUUID());
         var investisseur = new Investisseur(investisseurId,"Test",new HashSet<>());
