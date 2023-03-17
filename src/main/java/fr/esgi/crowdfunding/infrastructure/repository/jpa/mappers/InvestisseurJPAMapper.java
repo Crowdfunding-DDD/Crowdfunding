@@ -1,5 +1,6 @@
 package fr.esgi.crowdfunding.infrastructure.repository.jpa.mappers;
 
+import fr.esgi.crowdfunding.exposition.dto.CampagneDto;
 import fr.esgi.crowdfunding.infrastructure.repository.jpa.entities.CampagneJPA;
 import fr.esgi.crowdfunding.infrastructure.repository.jpa.entities.InvestisseurJPA;
 import fr.esgi.crowdfunding.model.Campagne;
@@ -13,10 +14,13 @@ import org.springframework.stereotype.Component;
 @Component
 @Mapper(componentModel = "spring",
         builder = @Builder(disableBuilder = true),
-        uses = {},
+        uses = {InvestissementJPAMapper.class},
         injectionStrategy = InjectionStrategy.CONSTRUCTOR
 )
 
 public interface InvestisseurJPAMapper extends GenericJPAMapper<Investisseur, InvestisseurJPA> {
-
+    @Mapping(target = "id", source = "id.id")
+    InvestisseurJPA toRepository(Investisseur domain);
+    @Mapping(target = "id.id", source = "id")
+    Investisseur toDomain(InvestisseurJPA dto);
 }

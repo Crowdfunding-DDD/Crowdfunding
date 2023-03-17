@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring",
         builder = @Builder(disableBuilder = true),
-        uses = {InvestisseurJPAMapper.class},
+        uses = {InvestissementJPAMapper.class},
         injectionStrategy = InjectionStrategy.CONSTRUCTOR
 )
 @Component
