@@ -19,21 +19,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name = "projects")
-public class CampagneJPA {
+public class InvestissementJPA {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "campagnes_id_seq")
-    @SequenceGenerator(name = "campagnes_id_seq", sequenceName = "campagnes_id_seq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "investissements_id_seq")
+    @SequenceGenerator(name = "investissements_id_seq", sequenceName = "investissements_id_seq", initialValue = 1, allocationSize = 1)
     UUID id;
-    UUID createur;
-    String nom;
-    String description;
-    @Enumerated(EnumType.STRING)
-    CampagneTypeEnum type;
-    LocalDate dateCreation;
-    Double objectif;
-    @OneToMany
-    Set<InvestissementJPA> investissements;
-    @Enumerated(EnumType.STRING)
-    CampagneStateEnum etat;
-    Double tauxIntret;
+    Double montant;
+    LocalDate date;
+    @ManyToOne
+    CampagneJPA campagne;
+    @ManyToOne
+    InvestisseurJPA investisseur;
 }

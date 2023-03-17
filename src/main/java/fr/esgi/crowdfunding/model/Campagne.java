@@ -15,7 +15,6 @@ import java.util.UUID;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 public class Campagne {
     private CampagneID id;
@@ -27,7 +26,7 @@ public class Campagne {
     private Double objectif;
     private Set<Investissement> investissements;
     private CampagneStateEnum etat;
-    private Double tauxIntret;
+    private Double tauxInteret;
     private CampagneState currentState;
 
     public Campagne() {
@@ -44,7 +43,7 @@ public class Campagne {
     this.objectif=campagneObjectif;
     this.investissements=campagneInvestissements;
     this.etat=campagneEtat;
-    this.tauxIntret=campagneTauxInteret;
+    this.tauxInteret=campagneTauxInteret;
     }
 
     public void moveToNextState() {

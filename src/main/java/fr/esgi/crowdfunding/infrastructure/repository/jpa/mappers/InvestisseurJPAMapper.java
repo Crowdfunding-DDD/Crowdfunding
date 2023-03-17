@@ -1,25 +1,22 @@
 package fr.esgi.crowdfunding.infrastructure.repository.jpa.mappers;
 
 import fr.esgi.crowdfunding.infrastructure.repository.jpa.entities.CampagneJPA;
+import fr.esgi.crowdfunding.infrastructure.repository.jpa.entities.InvestisseurJPA;
 import fr.esgi.crowdfunding.model.Campagne;
+import fr.esgi.crowdfunding.model.Investisseur;
 import org.mapstruct.Builder;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.stereotype.Component;
 
-
+@Component
 @Mapper(componentModel = "spring",
         builder = @Builder(disableBuilder = true),
-        uses = {InvestisseurJPAMapper.class},
+        uses = {},
         injectionStrategy = InjectionStrategy.CONSTRUCTOR
 )
-@Component
-public interface CampagneJPAMapper extends GenericJPAMapper<Campagne, CampagneJPA> {
-    @Mapping(source = "id.id", target = "id")
-    CampagneJPA toRepository(Campagne domain);
 
-    @Mapping(source = "id", target = "id.id")
-    Campagne toDomain(CampagneJPA repository);
+public interface InvestisseurJPAMapper extends GenericJPAMapper<Investisseur, InvestisseurJPA> {
 
 }

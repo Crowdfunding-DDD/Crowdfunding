@@ -17,7 +17,7 @@ public record Investissement(InvestissementID id, Investisseur investisseur, Cam
         };
     }
     private Double recompenseCrowdEquity (){
-        return Objects.equals((campagne),DONE) ? montant() * campagne.getTauxInteret()/100 : ZERO;
+        return Objects.equals((campagne.getEtat()),DONE) ? montant() * campagne.getTauxInteret()/100 : ZERO;
     }
 
 
