@@ -12,7 +12,7 @@ public class ValidationCampagne {
     private final CampagneRepository repository;
     public void apply(UUID idCampagne, CampagneStateEnum etat) {
         var campagne = getCampagne(idCampagne);
-        campagne.setEtat(etat);
+        campagne.moveToNextState();
         repository.update(campagne);
     }
 

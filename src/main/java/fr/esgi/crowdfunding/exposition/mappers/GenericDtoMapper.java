@@ -1,4 +1,4 @@
-package fr.esgi.crowdfunding.application.exposition.mappers;
+package fr.esgi.crowdfunding.exposition.mappers;
 
 import java.util.Collection;
 import java.util.List;

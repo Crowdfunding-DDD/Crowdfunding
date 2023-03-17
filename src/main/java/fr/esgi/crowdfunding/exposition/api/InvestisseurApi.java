@@ -1,6 +1,6 @@
-package fr.esgi.crowdfunding.application.exposition.api;
+package fr.esgi.crowdfunding.exposition.api;
 
-import fr.esgi.crowdfunding.application.exposition.mappers.RecompenseDtoMapper;
+import fr.esgi.crowdfunding.exposition.mappers.RecompenseDtoMapper;
 import fr.esgi.crowdfunding.use_case.recompenses.CalculerRecompenses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

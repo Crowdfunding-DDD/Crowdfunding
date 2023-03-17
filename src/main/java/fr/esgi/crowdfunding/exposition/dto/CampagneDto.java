@@ -1,4 +1,4 @@
-package fr.esgi.crowdfunding.application.exposition.dto;
+package fr.esgi.crowdfunding.exposition.dto;
 
 import fr.esgi.crowdfunding.model.CampagneStateEnum;
 import fr.esgi.crowdfunding.model.CampagneTypeEnum;

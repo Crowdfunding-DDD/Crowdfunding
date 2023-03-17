@@ -1,8 +1,7 @@
-package fr.esgi.crowdfunding.application.exposition.api;
+package fr.esgi.crowdfunding.exposition.api;
 
-import fr.esgi.crowdfunding.application.exposition.dto.CampagneDto;
-import fr.esgi.crowdfunding.application.exposition.mappers.CampagneDtoMapper;
-import fr.esgi.crowdfunding.application.exposition.mappers.RecompenseDtoMapper;
+import fr.esgi.crowdfunding.exposition.dto.CampagneDto;
+import fr.esgi.crowdfunding.exposition.mappers.CampagneDtoMapper;
 import fr.esgi.crowdfunding.model.CampagneStateEnum;
 import fr.esgi.crowdfunding.use_case.creation_compagne.CreationCampagne;
 import fr.esgi.crowdfunding.use_case.creation_compagne.ValidationCampagne;

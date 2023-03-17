@@ -1,7 +1,7 @@
-package fr.esgi.crowdfunding.application.exposition.mappers;
+package fr.esgi.crowdfunding.exposition.mappers;
 
 
-import fr.esgi.crowdfunding.application.exposition.dto.RecompenseDto;
+import fr.esgi.crowdfunding.exposition.dto.RecompenseDto;
 import fr.esgi.crowdfunding.model.Recompense;
 import org.mapstruct.Builder;
 import org.mapstruct.InjectionStrategy;
