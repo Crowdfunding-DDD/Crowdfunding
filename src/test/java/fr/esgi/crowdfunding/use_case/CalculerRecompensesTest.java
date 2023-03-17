@@ -43,9 +43,9 @@ class CalculerRecompensesTest {
         when(investisseurRepository.getById(investisseurId)).thenReturn(java.util.Optional.of(investisseur));
 
         List<Recompense> expectedRecompenses = new ArrayList<>();
-        expectedRecompenses.add(new Recompense(campagne1.id(), 20.0));
-        expectedRecompenses.add(new Recompense(campagne2.id(), 60.0));
-        expectedRecompenses.add(new Recompense(campagne3.id(), 0.0));
+        expectedRecompenses.add(new Recompense(campagne1.getId(), 20.0));
+        expectedRecompenses.add(new Recompense(campagne2.getId(), 60.0));
+        expectedRecompenses.add(new Recompense(campagne3.getId(), 0.0));
 
         var actualRecompenses = calculerRecompenses.apply(investisseurId);
 

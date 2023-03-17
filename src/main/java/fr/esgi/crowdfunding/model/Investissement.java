@@ -14,17 +14,19 @@ public record Investissement(UUID id, Investisseur investisseur, Campagne campag
 
     public Double getAllRecompenses() {
         return switch (campagne().getType()) {
-            case CROWD_EQUITY -> recompenseCrowdEquity.applyAsDouble(this);
-            case CROWD_LENDING -> recompenseCrowdLending.applyAsDouble(this);
-            case CROWD_DONATION -> ZERO;
+            case CROWD_EQUITY -> recompenseCrowdEquity();
+            case CROWD_LENDING -> recompenseCrowdLending();
             default -> ZERO;
         };
     }
-    private static ToDoubleFunction<Investissement> recompenseCrowdEquity = investissement ->
-            Objects.equals(investissement.campagne().getEtat(),DONE) ? investissement.montant() * investissement.campagne().getTauxIntret()/100 : ZERO;
-    private static ToDoubleFunction<Investissement> recompenseCrowdLending = investissement -> {
-        var nbMonths = Period.between(investissement.date(), LocalDate.now()).toTotalMonths();
-        return investissement.montant() * investissement.campagne().getTauxIntret() * nbMonths/ 100;
+    private Double recompenseCrowdEquity (){
+        return Objects.equals((campagne),DONE) ? montant() * campagne.getTauxIntret()/100 : ZERO;
+    }
+
+
+    private Double recompenseCrowdLending () {
+        var nbMonths = Period.between(date, LocalDate.now()).toTotalMonths();
+        return montant * campagne.getTauxIntret() * nbMonths/ 100;
     };
     @Override
     public boolean equals(Object o) {
